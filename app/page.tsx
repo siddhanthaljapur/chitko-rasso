@@ -1,65 +1,242 @@
-import Image from "next/image";
+import Image from 'next/image';
+import Link from 'next/link';
+import styles from './page.module.css';
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <main className={styles.main}>
+      {/* Hero Section */}
+      <section className={styles.hero}>
+        <div className={styles.heroContent}>
+          <div className={styles.heroText}>
+            <h1 className={`${styles.heroTitle} animate-fadeInUp`}>
+              CHITKO RASSO
+            </h1>
+            <p className={`${styles.heroTagline} animate-fadeInUp`}>
+              Authentic Saoji Flavours from Hyderabad
+            </p>
+            <div className={`${styles.heroCta} animate-fadeInUp`}>
+              <Link href="/menu" className={styles.btnPrimary}>
+                Order Now
+              </Link>
+              <Link href="/menu" className={styles.btnSecondary}>
+                View Menu
+              </Link>
+            </div>
+          </div>
+          <div className={`${styles.heroImage} animate-float`}>
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src="/hero-food.png"
+              alt="Authentic Saoji Cuisine"
+              width={600}
+              height={600}
+              priority
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* Highlights Section */}
+      <section className={styles.highlights}>
+        <div className="container">
+          <div className={styles.highlightsGrid}>
+            <div className={styles.highlightCard}>
+              <div className={styles.highlightIcon}>⭐</div>
+              <h3>4.0 Rating</h3>
+              <p>Loved by customers</p>
+            </div>
+            <div className={styles.highlightCard}>
+              <div className={styles.highlightIcon}>🚚</div>
+              <h3>Delivery Only</h3>
+              <p>Fresh to your door</p>
+            </div>
+            <div className={styles.highlightCard}>
+              <div className={styles.highlightIcon}>✓</div>
+              <h3>FSSAI Licensed</h3>
+              <p>Safe & hygienic</p>
+            </div>
+            <div className={styles.highlightCard}>
+              <div className={styles.highlightIcon}>🌶️</div>
+              <h3>Authentic Saoji</h3>
+              <p>Traditional recipes</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Popular Categories */}
+      <section className={styles.categories}>
+        <div className="container">
+          <h2 className={styles.sectionTitle}>Popular Categories</h2>
+          <p className={styles.sectionSubtitle}>
+            Explore our signature dishes crafted with authentic Saoji spices
+          </p>
+
+          <div className={styles.categoriesGrid}>
+            <Link href="/menu?category=starters" className={styles.categoryCard}>
+              <div className={styles.categoryImage}>
+                <Image
+                  src="/starters.png"
+                  alt="Starters"
+                  width={400}
+                  height={300}
+                  style={{ objectFit: 'cover' }}
+                />
+                <div className={styles.categoryOverlay}></div>
+              </div>
+              <div className={styles.categoryContent}>
+                <h3>Starters</h3>
+                <p>Spicy kababs & appetizers</p>
+              </div>
+            </Link>
+
+            <Link href="/menu?category=biryanis" className={styles.categoryCard}>
+              <div className={styles.categoryImage}>
+                <Image
+                  src="/biryani.png"
+                  alt="Biryanis"
+                  width={400}
+                  height={300}
+                  style={{ objectFit: 'cover' }}
+                />
+                <div className={styles.categoryOverlay}></div>
+              </div>
+              <div className={styles.categoryContent}>
+                <h3>Biryanis</h3>
+                <p>Aromatic Saoji-style biryanis</p>
+              </div>
+            </Link>
+
+            <Link href="/menu?category=thalis" className={styles.categoryCard}>
+              <div className={styles.categoryImage}>
+                <Image
+                  src="/thali.png"
+                  alt="Saoji Thalis"
+                  width={400}
+                  height={300}
+                  style={{ objectFit: 'cover' }}
+                />
+                <div className={styles.categoryOverlay}></div>
+              </div>
+              <div className={styles.categoryContent}>
+                <h3>Saoji Thalis</h3>
+                <p>Complete traditional meals</p>
+              </div>
+            </Link>
+
+            <Link href="/menu?category=rice-bowls" className={styles.categoryCard}>
+              <div className={styles.categoryImage}>
+                <Image
+                  src="/rice-bowl.png"
+                  alt="Rice Bowls"
+                  width={400}
+                  height={300}
+                  style={{ objectFit: 'cover' }}
+                />
+                <div className={styles.categoryOverlay}></div>
+              </div>
+              <div className={styles.categoryContent}>
+                <h3>Rice Bowls</h3>
+                <p>Quick & delicious meals</p>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className={styles.testimonials}>
+        <div className="container">
+          <h2 className={styles.sectionTitle}>What Our Customers Say</h2>
+
+          <div className={styles.testimonialsGrid}>
+            <div className={styles.testimonialCard}>
+              <div className={styles.testimonialStars}>⭐⭐⭐⭐⭐</div>
+              <p className={styles.testimonialText}>
+                "The authentic Saoji flavors are incredible! Best biryani I've had in Hyderabad."
+              </p>
+              <div className={styles.testimonialAuthor}>
+                <strong>Rajesh Kumar</strong>
+                <span>Secunderabad</span>
+              </div>
+            </div>
+
+            <div className={styles.testimonialCard}>
+              <div className={styles.testimonialStars}>⭐⭐⭐⭐⭐</div>
+              <p className={styles.testimonialText}>
+                "Spice level is perfect! The mutton curry reminds me of home-cooked meals."
+              </p>
+              <div className={styles.testimonialAuthor}>
+                <strong>Priya Sharma</strong>
+                <span>Begumpet</span>
+              </div>
+            </div>
+
+            <div className={styles.testimonialCard}>
+              <div className={styles.testimonialStars}>⭐⭐⭐⭐</div>
+              <p className={styles.testimonialText}>
+                "Fast delivery and amazing packaging. The food arrived hot and fresh!"
+              </p>
+              <div className={styles.testimonialAuthor}>
+                <strong>Amit Patel</strong>
+                <span>Banjara Hills</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className={styles.footer}>
+        <div className="container">
+          <div className={styles.footerGrid}>
+            <div className={styles.footerSection}>
+              <h3 className={styles.footerBrand}>CHITKO RASSO</h3>
+              <p>Authentic Saoji Flavours from the Heart of Nagpur</p>
+              <div className={styles.socialLinks}>
+                <a href="#" aria-label="Facebook">📘</a>
+                <a href="#" aria-label="Instagram">📷</a>
+                <a href="#" aria-label="Twitter">🐦</a>
+              </div>
+            </div>
+
+            <div className={styles.footerSection}>
+              <h4>Quick Links</h4>
+              <ul>
+                <li><Link href="/menu">Menu</Link></li>
+                <li><Link href="/about">About Us</Link></li>
+                <li><Link href="/contact">Contact</Link></li>
+                <li><Link href="/faq">FAQ</Link></li>
+              </ul>
+            </div>
+
+            <div className={styles.footerSection}>
+              <h4>Contact Us</h4>
+              <p>📍 Secunderabad, Hyderabad</p>
+              <p>📞 +91 XXXXX XXXXX</p>
+              <p>✉️ info@chitkrasso.com</p>
+              <p>🏅 FSSAI Lic: XXXXXXXXXXXXX</p>
+            </div>
+
+            <div className={styles.footerSection}>
+              <h4>Opening Hours</h4>
+              <p>Monday - Sunday</p>
+              <p>11:00 AM - 11:00 PM</p>
+              <Link href="/menu" className={styles.btnPrimary} style={{ marginTop: '1rem', display: 'inline-block' }}>
+                Order Now
+              </Link>
+            </div>
+          </div>
+
+          <div className={styles.footerBottom}>
+            <p>&copy; 2026 CHITKO RASSO. All rights reserved.</p>
+            <div className={styles.footerLinks}>
+              <Link href="/privacy">Privacy Policy</Link>
+              <Link href="/terms">Terms & Conditions</Link>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
   );
 }
