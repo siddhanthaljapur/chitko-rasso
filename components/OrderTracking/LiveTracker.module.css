@@ -1,0 +1,287 @@
+.trackerContainer {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.statusHeader {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.statusHeader h2 {
+    font-size: 1.5rem;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.statusHeader p {
+    color: #6b7280;
+    font-weight: 600;
+}
+
+.progressSteps {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+}
+
+.progressBar {
+    position: absolute;
+    top: 20px;
+    left: 2rem;
+    height: 4px;
+    background: #e5e7eb;
+    /* Track */
+    z-index: 0;
+    width: calc(100% - 4rem);
+}
+
+/* We use a pseudo element or separate progress element for the active bar */
+/* But here we can just use linear gradient or JS dynamic width */
+.progressBar {
+    background: linear-gradient(to right, #10b981 0%, #10b981 var(--progress), #e5e7eb var(--progress), #e5e7eb 100%);
+    /* Note: --progress var needs to be passed in inline style, or we use width on an inner div.
+       In the component I simulated it with `width` on a separate bar, which is decent.
+       Let's stick to the component structure where .progressBar IS the active bar?
+       Actually in component: <div className={styles.progressBar} style={{ width: ... }} />
+       Wait, if width is dynamic, it shows the active part. The background track is missing.
+    */
+    background: #10b981;
+    z-index: 1;
+}
+
+/* We need a track behind it */
+.progressSteps::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 2rem;
+    right: 2rem;
+    height: 4px;
+    background: #e5e7eb;
+    z-index: 0;
+}
+
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    gap: 0.5rem;
+    width: 80px;
+}
+
+.stepIcon {
+    width: 40px;
+    height: 40px;
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #9ca3af;
+    transition: all 0.3s;
+}
+
+.step.active .stepIcon {
+    border-color: #ff6b35;
+    background: #fff7ed;
+    color: #ff6b35;
+    transform: scale(1.1);
+    box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+}
+
+.step.completed .stepIcon {
+    border-color: #10b981;
+    background: #10b981;
+    color: white;
+}
+
+.stepLabel {
+    font-size: 0.8rem;
+    color: #9ca3af;
+    font-weight: 500;
+    text-align: center;
+}
+
+.step.active .stepLabel {
+    color: #ff6b35;
+    font-weight: 700;
+}
+
+.step.completed .stepLabel {
+    color: #10b981;
+    font-weight: 600;
+}
+
+.mapSection {
+    background: #f3f4f6;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border: 2px solid #e5e7eb;
+    position: relative;
+    overflow: hidden;
+}
+
+.mapSvg {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
+}
+
+.road {
+    fill: none;
+    stroke: #e5e7eb;
+    stroke-width: 4;
+    stroke-linecap: round;
+}
+
+.roadActive {
+    fill: none;
+    stroke: #ff6b35;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-dasharray: 1000;
+    transition: stroke-dashoffset 1s ease;
+}
+
+.pulse {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: scale(1.2);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.messageBox {
+    background: #eff6ff;
+    border: 1px solid #dbeafe;
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.messageIcon {
+    font-size: 2.5rem;
+    background: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.messageTitle {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #1e3a8a;
+    margin-bottom: 0.25rem;
+}
+
+.messageDesc {
+    color: #3b82f6;
+    font-size: 0.95rem;
+}
+
+/* RIDER CARD STYLES */
+.riderCard {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    animation: slideUp 0.5s ease-out;
+}
+
+.riderAvatar {
+    width: 56px;
+    height: 56px;
+    background: #f3f4f6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.riderInfo {
+    flex: 1;
+}
+
+.riderInfo h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #111827;
+}
+
+.riderInfo p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.riderMeta {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: #4b5563;
+    font-weight: 500;
+}
+
+.trackBtn {
+    padding: 0.5rem 1rem;
+    background: #111827;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+
+.trackBtn:hover {
+    background: #374151;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

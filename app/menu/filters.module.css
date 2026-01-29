@@ -1,0 +1,36 @@
+/* Filter Toggle Button */
+.filterToggleBtn {
+    margin-left: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #ff6b35 0%, #e55a28 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+    white-space: nowrap;
+}
+
+.filterToggleBtn:hover {
+    background: linear-gradient(135deg, #e55a28 0%, #d14a1f 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4);
+}
+
+/* Collapsible Filters Container */
+.filtersContainer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, opacity 0.3s ease-out, margin-top 0.3s ease-out;
+    opacity: 0;
+    margin-top: 0;
+}
+
+.filtersContainer.filtersOpen {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: 1.5rem;
+}

@@ -1,0 +1,143 @@
+.sidebar {
+    width: 280px;
+    background: #1f2937;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 50;
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebarHeader {
+    padding: 2rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebarHeader h2 {
+    font-size: 1.5rem;
+    color: #ffc857;
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+}
+
+.sidebarHeader p {
+    color: #9ca3af;
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.sidebarNav {
+    flex: 1;
+    padding: 1.5rem 0;
+}
+
+.navItem,
+.navItemActive {
+    display: block;
+    padding: 1rem 1.5rem;
+    color: #9ca3af;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.navItem:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+}
+
+.navItemActive {
+    background: rgba(255, 200, 87, 0.1);
+    color: #ffc857;
+    border-left: 3px solid #ffc857;
+}
+
+.sidebarFooter {
+    padding: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.adminInfo {
+    margin-bottom: 1rem;
+}
+
+.adminInfo p {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    margin: 0.25rem 0;
+}
+
+.adminInfo strong {
+    color: white;
+}
+
+.logoutBtn {
+    width: 100%;
+    padding: 0.75rem;
+    background: rgba(220, 53, 69, 0.1);
+    color: #dc2626;
+    border: 1px solid #dc2626;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.logoutBtn:hover {
+    background: #dc2626;
+    color: white;
+}
+
+/* Toggle Button for Mobile */
+.toggleBtn {
+    display: none;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 60;
+    padding: 0.5rem;
+    background: #1f2937;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.mobileOverlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 40;
+}
+
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 240px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .toggleBtn {
+        display: block;
+    }
+
+    .mobileOverlay.open {
+        display: block;
+    }
+}

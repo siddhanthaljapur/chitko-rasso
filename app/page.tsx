@@ -1,10 +1,23 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useAuth } from '@/lib/context/AuthContext';
+import { useToast } from '@/lib/context/ToastContext';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import PromoPopup from '@/components/PromoPopup';
+import ActiveOrderFloat from '@/components/ActiveOrderFloat';
 import styles from './page.module.css';
 
 export default function Home() {
+  // Navbar handles auth state display
+  // Keeping context hooks if needed for future features
+
   return (
     <main className={styles.main}>
+      <Navbar />
+
       {/* Hero Section */}
       <section className={styles.hero}>
         <div className={styles.heroContent}>
@@ -13,7 +26,7 @@ export default function Home() {
               CHITKO RASSO
             </h1>
             <p className={`${styles.heroTagline} animate-fadeInUp`}>
-              Authentic Saoji Flavours from Hyderabad
+              Authentic Saoji Flavours from the Heart of Hyderabad
             </p>
             <div className={`${styles.heroCta} animate-fadeInUp`}>
               <Link href="/menu" className={styles.btnPrimary}>
@@ -140,7 +153,73 @@ export default function Home() {
                 <p>Quick & delicious meals</p>
               </div>
             </Link>
+
+            <Link href="/menu?category=chinese" className={styles.categoryCard}>
+              <div className={styles.categoryImage}>
+                <Image
+                  src="/chinese_category.png"
+                  alt="Chinese"
+                  width={400}
+                  height={300}
+                  style={{ objectFit: 'cover' }}
+                />
+                <div className={styles.categoryOverlay}></div>
+              </div>
+              <div className={styles.categoryContent}>
+                <h3>Chinese</h3>
+                <p>Noodles, Manchurian & more</p>
+              </div>
+            </Link>
+
+            <Link href="/menu?category=tandoori" className={styles.categoryCard}>
+              <div className={styles.categoryImage}>
+                <Image
+                  src="/tandoori_category.png"
+                  alt="Tandoori"
+                  width={400}
+                  height={300}
+                  style={{ objectFit: 'cover' }}
+                />
+                <div className={styles.categoryOverlay}></div>
+              </div>
+              <div className={styles.categoryContent}>
+                <h3>Tandoori</h3>
+                <p>Smoky clay oven specials</p>
+              </div>
+            </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Track Order Widget */}
+      <section className={styles.trackSection} style={{ background: '#f8f9fa', padding: '4rem 0', textAlign: 'center' }}>
+        <div className="container">
+          <h2 className={styles.sectionTitle}>Track Your Order 🛵</h2>
+          <p className={styles.sectionSubtitle}>Enter your Order ID to see live delivery status</p>
+
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              const form = e.target as HTMLFormElement;
+              const input = form.elements.namedItem('orderId') as HTMLInputElement;
+              if (input.value) window.location.href = `/track?orderId=${input.value}`;
+            }}
+            style={{ maxWidth: '500px', margin: '2rem auto', display: 'flex', gap: '1rem' }}
+          >
+            <input
+              name="orderId"
+              type="text"
+              placeholder="e.g. ORD-123456789"
+              required
+              style={{ flex: 1, padding: '1rem', borderRadius: '12px', border: '1px solid #ddd', fontSize: '1rem' }}
+            />
+            <button
+              type="submit"
+              style={{ background: '#ff6b35', color: 'white', border: 'none', padding: '0 2rem', borderRadius: '12px', fontWeight: 'bold', fontSize: '1rem', cursor: 'pointer' }}
+            >
+              Track
+            </button>
+          </form>
         </div>
       </section>
 
@@ -187,56 +266,13 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className={styles.footer}>
-        <div className="container">
-          <div className={styles.footerGrid}>
-            <div className={styles.footerSection}>
-              <h3 className={styles.footerBrand}>CHITKO RASSO</h3>
-              <p>Authentic Saoji Flavours from the Heart of Nagpur</p>
-              <div className={styles.socialLinks}>
-                <a href="#" aria-label="Facebook">📘</a>
-                <a href="#" aria-label="Instagram">📷</a>
-                <a href="#" aria-label="Twitter">🐦</a>
-              </div>
-            </div>
+      <Footer />
 
-            <div className={styles.footerSection}>
-              <h4>Quick Links</h4>
-              <ul>
-                <li><Link href="/menu">Menu</Link></li>
-                <li><Link href="/about">About Us</Link></li>
-                <li><Link href="/contact">Contact</Link></li>
-                <li><Link href="/faq">FAQ</Link></li>
-              </ul>
-            </div>
+      {/* Promo Popup */}
+      <PromoPopup />
 
-            <div className={styles.footerSection}>
-              <h4>Contact Us</h4>
-              <p>📍 Secunderabad, Hyderabad</p>
-              <p>📞 +91 XXXXX XXXXX</p>
-              <p>✉️ info@chitkrasso.com</p>
-              <p>🏅 FSSAI Lic: XXXXXXXXXXXXX</p>
-            </div>
-
-            <div className={styles.footerSection}>
-              <h4>Opening Hours</h4>
-              <p>Monday - Sunday</p>
-              <p>11:00 AM - 11:00 PM</p>
-              <Link href="/menu" className={styles.btnPrimary} style={{ marginTop: '1rem', display: 'inline-block' }}>
-                Order Now
-              </Link>
-            </div>
-          </div>
-
-          <div className={styles.footerBottom}>
-            <p>&copy; 2026 CHITKO RASSO. All rights reserved.</p>
-            <div className={styles.footerLinks}>
-              <Link href="/privacy">Privacy Policy</Link>
-              <Link href="/terms">Terms & Conditions</Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      {/* Floating Active Order Widget */}
+      <ActiveOrderFloat />
     </main>
   );
 }

@@ -1,0 +1,206 @@
+.successPage {
+    min-height: 100vh;
+    background: var(--gradient-hero);
+    display: flex;
+    align-items: flex-start;
+    /* Better for long content */
+    justify-content: center;
+    padding: var(--space-8) var(--space-4);
+    width: 100%;
+}
+
+.loadingState {
+    text-align: center;
+    color: white;
+    font-size: var(--text-base);
+}
+
+.successCard {
+    background: white;
+    padding: var(--space-8);
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-xl);
+    width: 100%;
+    max-width: 480px;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.successIcon {
+    font-size: 3.5rem;
+    margin-bottom: var(--space-4);
+    animation: scaleIn 0.5s ease-out;
+}
+
+.successCard h1 {
+    font-size: var(--text-2xl);
+    color: var(--color-success);
+    margin-bottom: var(--space-2);
+}
+
+.subtitle {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-6);
+}
+
+.orderInfo {
+    background: var(--gradient-card);
+    padding: var(--space-6);
+    border-radius: var(--radius-xl);
+    margin-bottom: var(--space-8);
+}
+
+.orderNumber {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.orderNumber span {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+}
+
+.orderNumber strong {
+    font-size: var(--text-2xl);
+    color: var(--color-primary);
+}
+
+.deliveryInfo,
+.orderSummary {
+    text-align: left;
+    background: var(--color-bg-secondary);
+    padding: var(--space-5);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-4);
+}
+
+.deliveryInfo h3,
+.orderSummary h3 {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-4);
+    color: var(--color-text-primary);
+}
+
+.deliveryInfo p {
+    margin: var(--space-2) 0;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+}
+
+.divider {
+    height: 1px;
+    background: var(--color-bg-tertiary);
+    margin: var(--space-4) 0;
+}
+
+.totalRow {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-3);
+}
+
+.totalRow strong {
+    color: var(--color-primary);
+}
+
+.paymentMethod {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+}
+
+.paymentMethod strong {
+    color: var(--color-text-primary);
+}
+
+.statusInfo {
+    background: rgba(40, 167, 69, 0.1);
+    border: 1px solid var(--color-success);
+    padding: var(--space-5);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-8);
+}
+
+.statusInfo p {
+    margin: var(--space-2) 0;
+    color: var(--color-text-primary);
+}
+
+.actions {
+    display: flex;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+}
+
+.btnPrimary,
+.btnSecondary {
+    flex: 1;
+    padding: var(--space-4);
+    border-radius: var(--radius-xl);
+    font-weight: var(--font-semibold);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    text-align: center;
+}
+
+.btnPrimary {
+    background: var(--color-primary);
+    color: white;
+}
+
+.btnPrimary:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btnSecondary {
+    background: white;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+}
+
+.btnSecondary:hover {
+    background: var(--color-primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.contactInfo {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+}
+
+.contactInfo strong {
+    color: var(--color-primary);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .successCard {
+        padding: var(--space-8);
+    }
+
+    .successCard h1 {
+        font-size: var(--text-3xl);
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+}

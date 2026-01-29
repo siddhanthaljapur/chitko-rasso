@@ -1,0 +1,122 @@
+/* Favorites Grid */
+.favoritesGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+@media (min-width: 640px) {
+    .favoritesGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .favoritesGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.favoriteCard {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.favoriteCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.favoriteContent {
+    padding: 1rem;
+}
+
+.favoriteContent h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #1f2937;
+}
+
+.favoriteContent p {
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.favoriteFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.favoriteFooter .price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ff6b35;
+}
+
+.btnPrimary {
+    padding: 0.5rem 1rem;
+    background: #ff6b35;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.9rem;
+}
+
+.btnPrimary:hover {
+    background: #e55a28;
+    transform: translateY(-2px);
+}
+
+.btnSecondary {
+    padding: 0.5rem 1rem;
+    background: transparent;
+    color: #6b7280;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+}
+
+.btnSecondary:hover {
+    border-color: #ff6b35;
+    color: #ff6b35;
+}
+
+/* Reorder Button */
+.reorderBtn {
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 1rem;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.reorderBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.reorderBtn:active {
+    transform: translateY(0);
+}

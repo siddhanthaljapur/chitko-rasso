@@ -1,0 +1,236 @@
+.loginPage {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fdf2f8;
+    /* Very light pink background */
+    padding: 1rem;
+}
+
+.loginContainer {
+    width: 100%;
+    max-width: 450px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.loginCard {
+    background: white;
+    padding: 2rem 2.5rem;
+    /* Reduced vertical padding */
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logoSection {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    /* Reduced from 2.5rem */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logoImage {
+    margin-bottom: 0.75rem;
+    /* Reduced from 1rem */
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    text-decoration: none;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.tagline {
+    color: #6b7280;
+    margin-top: 0.25rem;
+    /* Reduced from 0.5rem */
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Method Toggle */
+.methodToggle {
+    display: flex;
+    background: #f3f4f6;
+    padding: 4px;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    /* Reduced from 2rem */
+}
+
+.method {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 0.6rem;
+    /* Reduced padding */
+    border-radius: 8px;
+    color: #666;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+}
+
+.activeMethod {
+    flex: 1;
+    border: none;
+    padding: 0.6rem;
+    /* Reduced padding */
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+    background: white;
+    color: #ff6b35;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.loginForm h1 {
+    font-size: 1.25rem;
+    /* Slightly smaller title */
+    margin-bottom: 1rem;
+    /* Reduced from 1.5rem */
+    color: #1f2937;
+    text-align: center;
+}
+
+.error {
+    background-color: #fef2f2;
+    color: #ef4444;
+    padding: 0.75rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+    border: 1px solid #fee2e2;
+}
+
+.demoCredentials {
+    background-color: #f0fdf4;
+    border: 1px solid #dcfce7;
+    padding: 0.75rem;
+    /* Reduced padding */
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    color: #166534;
+}
+
+.demoCredentials p {
+    margin: 0.1rem 0;
+}
+
+.formGroup {
+    margin-bottom: 1rem;
+    /* Reduced from 1.25rem */
+}
+
+.formGroup label {
+    display: block;
+    margin-bottom: 0.25rem;
+    /* Reduced from 0.5rem */
+    font-weight: 500;
+    color: #374151;
+    font-size: 0.9rem;
+}
+
+.formGroup input {
+    width: 100%;
+    padding: 0.75rem;
+    /* Reduced from 0.875rem */
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    outline: none;
+}
+
+.formGroup input:focus {
+    border-color: #ff6b35;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.loginBtn {
+    width: 100%;
+    padding: 0.875rem;
+    /* Reduced from 1rem */
+    background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 0.5rem;
+    /* Reduced from 1rem */
+}
+
+.loginBtn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+}
+
+.loginBtn:disabled {
+    background: #e5e7eb;
+    color: #9ca3af;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.links {
+    margin-top: 1rem;
+    /* Reduced from 1.5rem */
+    text-align: center;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.links a {
+    color: #ff6b35;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+.backLink {
+    display: block;
+    text-align: center;
+    margin-top: 1.5rem;
+    /* Reduced from 2rem */
+    color: #666;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s;
+}
+
+.backLink:hover {
+    color: #ff6b35;
+}

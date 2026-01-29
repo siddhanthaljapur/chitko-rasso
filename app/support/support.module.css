@@ -1,0 +1,294 @@
+.supportPage {
+    background-color: #f9fafb;
+    min-height: 100vh;
+}
+
+.hero {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    padding: 4rem 0 6rem;
+    text-align: center;
+    position: relative;
+}
+
+.heroContent {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 800;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+.searchContainer {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    border: none;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    outline: none;
+    transition: all 0.2s;
+}
+
+.searchInput:focus {
+    transform: scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.mainContent {
+    margin-top: -3rem;
+    padding-bottom: 4rem;
+    position: relative;
+    z-index: 10;
+}
+
+/* Quick Actions Grid */
+.quickActions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.actionCard {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.2s;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid transparent;
+}
+
+.actionCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-color: #e5e7eb;
+}
+
+.actionIcon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.actionTitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #1f2937;
+}
+
+.actionDesc {
+    color: #6b7280;
+    font-size: 0.95rem;
+}
+
+/* Section Styling */
+.section {
+    margin-bottom: 3rem;
+}
+
+.sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.sectionTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.viewAllLink {
+    color: #ff6b35;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.viewAllLink:hover {
+    text-decoration: underline;
+}
+
+/* Tickets List */
+.ticketsList {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.emptyState {
+    padding: 4rem 2rem;
+    text-align: center;
+    color: #6b7280;
+}
+
+.ticketItem {
+    padding: 1.5rem;
+    border-bottom: 1px solid #f3f4f6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.1s;
+}
+
+.ticketItem:last-child {
+    border-bottom: none;
+}
+
+.ticketItem:hover {
+    background-color: #f9fafb;
+}
+
+.ticketInfo h4 {
+    color: #1f2937;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.ticketMeta {
+    font-size: 0.85rem;
+    color: #6b7280;
+    display: flex;
+    gap: 1rem;
+}
+
+.statusBadge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.statusOpen {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.statusInProgress {
+    background: #fef3c7;
+    color: #d97706;
+}
+
+.statusResolved {
+    background: #d1fae5;
+    color: #059669;
+}
+
+.statusClosed {
+    background: #f3f4f6;
+    color: #4b5563;
+}
+
+.createTicketBtn {
+    background: #ff6b35;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.createTicketBtn:hover {
+    background: #e65a25;
+}
+
+/* Contact Options */
+.contactGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.contactCard {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.contactIcon {
+    width: 48px;
+    height: 48px;
+    background: #fff7ed;
+    color: #ff6b35;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.contactContent h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #1f2937;
+}
+
+.contactContent p {
+    color: #6b7280;
+    margin-bottom: 0.25rem;
+    font-size: 0.95rem;
+}
+
+.link {
+    color: #ff6b35;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 0.5rem;
+    display: inline-block;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .quickActions {
+        grid-template-columns: 1fr;
+    }
+
+    .ticketItem {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .statusBadge {
+        align-self: flex-start;
+    }
+}
