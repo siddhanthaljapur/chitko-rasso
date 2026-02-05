@@ -39,3 +39,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Large media files (videos, large images)
+/public/videos/*.mp4
+/public/videos/*.webm
+/public/videos/*.mov
+/public/*.png
+/public/*.jpg
+/public/*.jpeg
+# Keep only small essential images
+!/public/icon.jpg
+!/public/logo.png
