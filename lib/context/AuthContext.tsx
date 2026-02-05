@@ -33,7 +33,7 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-    const { data: session, status } = useSession();
+    const { data: session, status, update } = useSession();
     const router = useRouter();
     const [user, setUser] = useState<User | null>(null);
 
@@ -139,9 +139,34 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         router.push('/');
     };
 
-    const updateProfile = (data: Partial<User>) => {
+    const updateProfile = async (data: Partial<User>) => {
         if (!user) return;
+
+        // Optimistic Update
         setUser({ ...user, ...data });
+
+        try {
+            const res = await fetch('/api/user/profile', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            });
+
+            if (!res.ok) {
+                console.error("Failed to persist profile update");
+                // Revert on failure
+                setUser(user);
+                return;
+            }
+
+            // Trigger NextAuth session update to refresh with new data from database
+            // This will call the jwt callback with trigger="update" and update the session
+            await update(data);
+        } catch (error) {
+            console.error("Error updating profile:", error);
+            // Revert on error
+            setUser(user);
+        }
     };
 
     // Placeholder Stubs for now

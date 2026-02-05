@@ -6,7 +6,11 @@
     top: 0;
     z-index: 100;
     padding: 0;
-    /* Removed padding to allow full-width banner */
+    transition: transform 0.3s ease-in-out;
+}
+
+.hidden {
+    transform: translateY(-100%);
 }
 
 .container {
@@ -140,50 +144,131 @@
     box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
 }
 
+.mobileMenuTrigger,
+.mobileHeaderActions {
+    display: none;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
-    .navLinks {
+    .navContent {
+        padding: 0.5rem 0;
+        /* Reduced padding for mobile */
+        justify-content: center;
+        /* Helper for centering */
+        position: relative;
+        min-height: 60px;
+        /* Force minimum height to contain logo */
+    }
+
+    .navLogo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 103;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        /* Ensure it respects container height */
+        /* Ensure it's above other things but below modal overlays if any */
+    }
+
+    .navLogo img {
+        width: 40px !important;
+        /* Even smaller to fit */
+        height: 40px !important;
+        object-fit: contain;
+    }
+
+    .mobileHeaderActions {
+        display: flex;
+        align-items: center;
         gap: 1rem;
-        font-size: 0.9rem;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 102;
+    }
+
+    .mobileMenuTrigger {
+        display: flex;
+        /* Show on mobile */
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        color: #333;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 102;
+    }
+
+    .mobileMenuTrigger svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    /* Hide the Bell and Cart inside the menu on mobile */
+    .navLinks .navBell,
+    .navLinks .navCart {
+        display: none !important;
+    }
+
+    .navLinks {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 70%;
+        background: white;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease-in-out;
+        z-index: 101;
+        padding: 2rem;
+    }
+
+    .navLinks.active {
+        right: 0;
+    }
+
+    .navLinks a {
+        font-size: 1.2rem;
+        color: #333;
+    }
+
+    .userMenu {
+        flex-direction: column;
+        width: 100%;
     }
 
     .userMenu span {
-        display: none;
+        display: inline;
+        /* Show name in mobile menu */
     }
 
     .logoutBtn {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.8rem;
-    }
-}
-
-.closedBanner {
-    background: #ef4444;
-    color: white;
-    padding: 0.65rem 1rem;
-    text-align: center;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 800;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
-    position: relative;
-    z-index: 101;
-    animation: fadeInDown 0.5s ease-out;
-}
-
-@keyframes fadeInDown {
-    from {
-        transform: translateY(-100%);
-        opacity: 0;
+        width: 100%;
+        text-align: center;
+        padding: 0.8rem;
     }
 
-    to {
-        transform: translateY(0);
-        opacity: 1;
+    @keyframes fadeInDown {
+        from {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
     }
 }

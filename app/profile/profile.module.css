@@ -2,9 +2,9 @@
 .profilePage {
     min-height: 100vh;
     background-color: #FFF5E6;
-    /* Matches the peach/beige tone */
     font-family: 'DM Sans', sans-serif;
-    /* Example modern sans */
+    position: relative;
+    overflow-x: hidden;
 }
 
 /* Add serif for headings */
@@ -62,6 +62,162 @@
     grid-template-columns: 280px 1fr;
     gap: 2rem;
     padding-bottom: 3rem;
+}
+
+/* ... existing desktop styles ... */
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .profilePage {
+        padding-bottom: 90px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .profileLayout {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        padding-bottom: 2rem;
+        width: 100%;
+        min-height: auto;
+        overflow: visible;
+    }
+
+    .mainContent {
+        width: 100%;
+        min-height: auto;
+        padding-bottom: 2rem;
+        overflow: visible;
+    }
+
+    .sidebar {
+        position: relative;
+        top: 0;
+        width: 100%;
+        z-index: 10;
+        margin-bottom: 1rem;
+    }
+
+    .userCard {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        text-align: left;
+        padding: 1.25rem;
+        margin-bottom: 1rem;
+    }
+
+    .avatar {
+        margin: 0;
+        width: 64px;
+        height: 64px;
+        font-size: 1.75rem;
+        flex-shrink: 0;
+    }
+
+    .userInfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .userCard h2 {
+        font-size: 1.1rem;
+        margin: 0 0 0.25rem 0;
+        line-height: 1.2;
+    }
+
+    .userCard p {
+        margin: 0;
+        font-size: 0.85rem;
+        color: #666;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+    }
+
+    .userPoints {
+        font-size: 0.85rem;
+        font-weight: bold;
+        color: #B8860B;
+        margin-top: 0.25rem;
+    }
+
+    /* Mobile Navigation Grid (2 Columns) */
+    .sidebarNav {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+        background: transparent;
+        padding: 0;
+        box-shadow: none;
+        overflow: visible;
+        margin-bottom: 1.5rem;
+        border-radius: 0;
+    }
+
+    .sidebarNav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .navItem,
+    .navItemActive {
+        width: 100%;
+        padding: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        border-radius: 12px;
+        font-size: 0.9rem;
+        border: 1px solid #e5e7eb;
+        background: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        text-align: center;
+    }
+
+    .navItemActive {
+        background: #ff6b35;
+        color: white;
+        border-color: #ff6b35;
+        font-weight: 600;
+        box-shadow: 0 4px 10px rgba(255, 107, 53, 0.3);
+    }
+
+    .navItem:hover {
+        background: white;
+        transform: translateY(-2px);
+    }
+
+    .navItemActive:hover {
+        background: #ff6b35;
+    }
+
+    .logo {
+        font-size: 1.25rem;
+    }
+
+    .mainContent {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .section h1 {
+        font-size: 1.5rem;
+    }
+
+    .infoGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .logoutBtn {
+        width: 100%;
+        margin-top: 1rem;
+    }
 }
 
 /* ===== SIDEBAR ===== */

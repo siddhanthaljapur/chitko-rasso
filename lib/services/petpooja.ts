@@ -1,4 +1,4 @@
-import { MenuItem } from '@/lib/menuData';
+import { MenuItem } from '@/lib/types';
 
 // Types for PetPooja API
 interface PetPoojaConfig {

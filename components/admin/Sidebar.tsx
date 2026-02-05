@@ -41,15 +41,31 @@ export default function AdminSidebar() {
 
     return (
         <>
-            <button className={styles.toggleBtn} onClick={toggleSidebar}>
-                ☰
-            </button>
+            {/* Mobile Header - Visible only on mobile */}
+            <div className={styles.mobileHeader}>
+                <button className={`${styles.toggleBtn} ${isOpen ? styles.hideToggle : ''}`} onClick={toggleSidebar}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+                <div className={styles.mobileTitleBlock}>
+                    <span className={styles.mobileBrand}>CHITKO RASSO</span>
+                    <span className={styles.mobileSubtitle}>Admin</span>
+                </div>
+            </div>
             <div className={`${styles.mobileOverlay} ${isOpen ? styles.open : ''}`} onClick={toggleSidebar} />
 
             <aside className={`${styles.sidebar} ${isOpen ? styles.open : ''}`}>
                 <div className={styles.sidebarHeader}>
-                    <h2>CHITKO RASSO</h2>
-                    <p>Admin Panel</p>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                        <div>
+                            <h2>CHITKO RASSO</h2>
+                            <p>Admin Panel</p>
+                        </div>
+                        <button className={styles.closeBtn} onClick={() => setIsOpen(false)}>×</button>
+                    </div>
                 </div>
 
                 <nav className={styles.sidebarNav}>

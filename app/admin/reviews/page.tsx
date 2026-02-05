@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useAuth } from '@/lib/context/AuthContext';
 import { useReviews, Review } from '@/lib/context/ReviewsContext';
 import { useToast } from '@/lib/context/ToastContext';
-import { menuData } from '@/lib/menuData';
+import { useMenu } from '@/lib/hooks/useMenu';
 import AdminSidebar from '@/components/admin/Sidebar';
 import styles from '../dashboard/dashboard.module.css';
 
@@ -14,6 +14,7 @@ export default function AdminReviewsPage() {
     const router = useRouter();
     const { isAuthenticated, logout, isAdmin } = useAuth();
     const { reviews, deleteReview } = useReviews();
+    const { menuItems } = useMenu();
     const { showToast } = useToast();
     const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -94,7 +95,7 @@ export default function AdminReviewsPage() {
                             </thead>
                             <tbody>
                                 {reviews.map(review => {
-                                    const dish = menuData.find(d => d.id === review.dishId);
+                                    const dish = menuItems.find(d => d.id === review.dishId);
                                     return (
                                         <tr key={review.id}>
                                             <td>{dish?.name || 'Unknown'}</td>

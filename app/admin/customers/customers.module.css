@@ -78,16 +78,24 @@
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     overflow: hidden;
+    max-height: calc(100vh - 250px);
+    /* Ensure it fits in viewport */
 }
 
 .tableContainer {
     overflow-x: auto;
+    overflow-y: auto;
+    max-height: calc(100vh - 250px);
+    -webkit-overflow-scrolling: touch;
+    /* Smooth scrolling on iOS */
 }
 
 .table {
     width: 100%;
     border-collapse: collapse;
     text-align: left;
+    table-layout: fixed;
+    /* Fixed layout prevents overflow */
 }
 
 .table th {
@@ -99,13 +107,43 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
     border-bottom: 1px solid #e5e7eb;
+    white-space: nowrap;
 }
+
+/* Set column widths */
+.table th:nth-child(1) {
+    width: 25%;
+}
+
+/* Name */
+.table th:nth-child(2) {
+    width: 30%;
+}
+
+/* Contact */
+.table th:nth-child(3) {
+    width: 15%;
+}
+
+/* Role */
+.table th:nth-child(4) {
+    width: 15%;
+}
+
+/* Points */
+.table th:nth-child(5) {
+    width: 15%;
+}
+
+/* Joined */
 
 .table td {
     padding: 1rem 1.5rem;
     border-bottom: 1px solid #f3f4f6;
     color: #1f2937;
     font-size: 0.95rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .table tr:last-child td {
@@ -162,6 +200,115 @@
     transition: color 0.2s;
 }
 
-.backBtn:hover {
-    color: #ff6b35;
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+        padding-bottom: 100px;
+        /* Space for mobile bottom nav */
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    .searchBox {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .searchInput {
+        font-size: 16px;
+        /* Prevents iOS zoom */
+    }
+
+    .statsGrid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .statCard {
+        padding: 1rem;
+    }
+
+    .statValue {
+        font-size: 1.5rem;
+    }
+
+    /* Card-based layout for table on mobile */
+    .tableContainer {
+        overflow-x: visible;
+    }
+
+    .table {
+        display: block;
+    }
+
+    .table thead {
+        display: none;
+        /* Hide table headers on mobile */
+    }
+
+    .table tbody {
+        display: block;
+    }
+
+    .table tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 1rem;
+        background: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .table tr:hover {
+        background: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #f3f4f6;
+        font-size: 0.9rem;
+    }
+
+    .table td:last-child {
+        border-bottom: none;
+    }
+
+    /* Add labels before each cell */
+    .table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #6b7280;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .userRole,
+    .pointsBadge {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.6rem;
+    }
+
+    .backBtn {
+        font-size: 0.85rem;
+        padding: 0.5rem 0;
+        min-height: 44px;
+        /* Touch-friendly */
+        display: flex;
+        align-items: center;
+    }
 }

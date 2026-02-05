@@ -166,13 +166,21 @@
 .heroContent {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 0 var(--space-6);
+    padding: 0 var(--space-4);
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--space-12);
+    gap: var(--space-8);
+    /* Reduced gap */
     align-items: center;
     position: relative;
     z-index: 1;
+}
+
+@media (max-width: 480px) {
+    .heroContent {
+        padding: 0 var(--space-2);
+        gap: var(--space-6);
+    }
 }
 
 @media (min-width: 768px) {
@@ -193,7 +201,7 @@
 }
 
 .heroTitle {
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-size: clamp(2rem, 8vw, 4.5rem);
     font-weight: var(--font-extrabold);
     margin-bottom: var(--space-4);
     letter-spacing: 0.02em;

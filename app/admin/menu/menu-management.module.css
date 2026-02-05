@@ -115,58 +115,22 @@
     display: flex;
     gap: 1rem;
     margin-bottom: 2rem;
+    flex-wrap: wrap;
 }
 
 .searchBox {
     flex: 1;
+    min-width: 250px;
 }
 
-.searchInput {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
-}
-
-.categorySelect {
-    padding: 0.75rem 1rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
-    min-width: 200px;
-}
-
-.stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-.statCard {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.statCard h3 {
-    margin: 0;
-    font-size: 2rem;
-    color: #1e3c72;
-}
-
-.statCard p {
-    margin: 0.5rem 0 0;
-    color: #666;
-}
+/* ... existing inputs ... */
 
 .tableContainer {
     background: white;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    overflow-x: auto;
+    /* Enable horizontal scroll */
 }
 
 .table {
@@ -438,23 +402,146 @@ input:checked+.slider:before {
 }
 
 @media (max-width: 768px) {
+
+    /* Hide sidebar on mobile, show hamburger menu instead */
     .sidebar {
-        width: 200px;
+        position: fixed;
+        left: -250px;
+        width: 250px;
+        transition: left 0.3s ease;
+        z-index: 1000;
+    }
+
+    .sidebar.open {
+        left: 0;
     }
 
     .main {
-        margin-left: 200px;
+        margin-left: 0;
+        padding: 1rem;
+        padding-bottom: 100px;
+        /* Space for mobile bottom nav */
+    }
+
+    .header h1 {
+        font-size: 1.5rem;
     }
 
     .stats {
         grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .statCard {
+        padding: 1rem;
+    }
+
+    .statNumber {
+        font-size: 1.5rem;
     }
 
     .filters {
         flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .searchBar,
+    .categoryFilter {
+        width: 100%;
+        font-size: 16px;
+        /* Prevents iOS zoom */
+        padding: 0.75rem;
+        min-height: 44px;
+    }
+
+    .addBtn {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        min-height: 44px;
+        font-size: 16px;
+    }
+
+    /* Single column grid for menu items */
+    .menuGrid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .menuCard {
+        padding: 1rem;
+    }
+
+    .menuImage {
+        height: 150px;
+    }
+
+    .menuInfo h3 {
+        font-size: 1rem;
+    }
+
+    .menuActions {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .editBtn,
+    .deleteBtn {
+        width: 100%;
+        padding: 0.6rem;
+        min-height: 44px;
+        font-size: 14px;
+    }
+
+    /* Modal adjustments */
+    .modal {
+        padding: 1rem;
+        align-items: flex-start;
+    }
+
+    .modalContent {
+        max-width: 100%;
+        margin: 0;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .modalHeader h2 {
+        font-size: 1.25rem;
     }
 
     .formRow {
         grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .formGroup label {
+        font-size: 0.9rem;
+    }
+
+    .formGroup input,
+    .formGroup select,
+    .formGroup textarea {
+        font-size: 16px;
+        /* Prevents iOS zoom */
+        padding: 0.75rem;
+    }
+
+    .modalActions {
+        flex-direction: column-reverse;
+        gap: 0.75rem;
+    }
+
+    .submitBtn,
+    .cancelBtn {
+        width: 100%;
+        padding: 0.75rem;
+        min-height: 44px;
+        font-size: 16px;
+    }
+
+    .confirmDeleteBtn,
+    .cancelDeleteBtn {
+        width: 100%;
+        min-height: 44px;
     }
 }

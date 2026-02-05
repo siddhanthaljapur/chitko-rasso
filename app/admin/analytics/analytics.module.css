@@ -164,6 +164,74 @@
     border-radius: 2px;
 }
 
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    .header p {
+        font-size: 0.85rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+
+    .card h3 {
+        font-size: 1.1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .chartContainer {
+        height: 250px;
+        padding-bottom: 40px;
+    }
+
+    .barLabel {
+        font-size: 0.65rem;
+    }
+
+    .topItem {
+        padding: 0.75rem 0;
+        gap: 0.75rem;
+    }
+
+    .rank {
+        width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
+    }
+
+    .itemName {
+        font-size: 0.9rem;
+    }
+
+    .itemMeta {
+        font-size: 0.8rem;
+    }
+
+    .itemValue {
+        font-size: 0.9rem;
+    }
+
+    .hourGrid {
+        gap: 2px;
+        height: 80px;
+    }
+
+    /* Add bottom padding for mobile nav */
+    .container {
+        padding-bottom: 100px;
+    }
+}
+
 @media (max-width: 640px) {
     .grid {
         grid-template-columns: 1fr;

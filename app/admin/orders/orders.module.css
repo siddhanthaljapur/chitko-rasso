@@ -125,7 +125,8 @@
 
 .searchBox {
     position: relative;
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
 }
 
 .searchInput {
@@ -222,4 +223,122 @@
     text-align: center;
     padding: 3rem;
     color: #6b7280;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+    }
+
+    .titleSection h1 {
+        font-size: 1.5rem;
+    }
+
+    .titleSection p {
+        font-size: 0.85rem;
+    }
+
+    .controls {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .dateFilter {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1rem;
+    }
+
+    .dateInput {
+        width: 100%;
+        font-size: 16px;
+        /* Prevents iOS zoom */
+        padding: 0.75rem;
+    }
+
+    .filterBtn {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        min-height: 44px;
+        /* Touch-friendly */
+        font-size: 16px;
+    }
+
+    .statsGrid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .statCard {
+        padding: 1rem;
+    }
+
+    .statValue {
+        font-size: 1.5rem;
+    }
+
+    /* Card-based order list for mobile */
+    .ordersTable {
+        display: block;
+    }
+
+    .ordersTable thead {
+        display: none;
+    }
+
+    .ordersTable tbody {
+        display: block;
+    }
+
+    .ordersTable tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 1rem;
+        background: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .ordersTable td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #f3f4f6;
+        font-size: 0.9rem;
+    }
+
+    .ordersTable td:last-child {
+        border-bottom: none;
+    }
+
+    .ordersTable td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #6b7280;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+    }
+
+    .statusSelect {
+        font-size: 16px;
+        /* Prevents iOS zoom */
+        padding: 0.6rem;
+        min-height: 44px;
+    }
+
+    .statusBadge {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.7rem;
+    }
+
+    /* Add bottom padding for mobile nav */
+    .container {
+        padding-bottom: 100px;
+    }
 }

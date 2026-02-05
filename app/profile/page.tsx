@@ -269,10 +269,12 @@ export default function ProfilePage() {
                             <div className={styles.avatar}>
                                 {user?.name.charAt(0).toUpperCase()}
                             </div>
-                            <h2>{user?.name}</h2>
-                            <p>{user?.email}</p>
-                            <div style={{ marginTop: '0.5rem', fontWeight: 'bold', color: '#B8860B' }}>
-                                {user?.loyaltyPoints || 0} Coins 🪙
+                            <div className={styles.userInfo}>
+                                <h2>{user?.name}</h2>
+                                <p>{user?.email}</p>
+                                <div className={styles.userPoints}>
+                                    {user?.loyaltyPoints || 0} Coins 🪙
+                                </div>
                             </div>
                         </div>
 
@@ -517,10 +519,11 @@ export default function ProfilePage() {
                                             Manage how you want to receive updates about your orders.
                                         </p>
 
-                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                                            <label style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1rem', background: '#f9f9f9', borderRadius: '8px' }}>
+
+                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                                            <label style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1.25rem', background: '#f9f9f9', borderRadius: '12px', border: '1px solid #e5e5e5' }}>
                                                 <div>
-                                                    <span style={{ fontWeight: 'bold', display: 'block' }}>📧 Email Notifications</span>
+                                                    <span style={{ fontWeight: 'bold', display: 'block', marginBottom: '0.25rem' }}>📧 Email Notifications</span>
                                                     <span style={{ fontSize: '0.85rem', color: '#666' }}>Receive order confirmations and receipt via email</span>
                                                 </div>
                                                 <input
@@ -531,9 +534,9 @@ export default function ProfilePage() {
                                                 />
                                             </label>
 
-                                            <label style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1rem', background: '#f9f9f9', borderRadius: '8px' }}>
+                                            <label style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1.25rem', background: '#f9f9f9', borderRadius: '12px', border: '1px solid #e5e5e5' }}>
                                                 <div>
-                                                    <span style={{ fontWeight: 'bold', display: 'block' }}>📱 SMS Notifications</span>
+                                                    <span style={{ fontWeight: 'bold', display: 'block', marginBottom: '0.25rem' }}>📱 SMS Notifications</span>
                                                     <span style={{ fontSize: '0.85rem', color: '#666' }}>Receive delivery updates via SMS</span>
                                                 </div>
                                                 <input
@@ -577,7 +580,7 @@ export default function ProfilePage() {
 
                         {activeTab === 'orders' && (
                             <section className={styles.section}>
-                                <h2>My Orders</h2>
+                                <h2>Order History 📦</h2>
                                 {orders.length === 0 ? (
                                     <div className={styles.emptyState}>
                                         <p>No orders found.</p>

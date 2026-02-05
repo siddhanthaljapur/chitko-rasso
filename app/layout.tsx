@@ -9,6 +9,7 @@ import { AddressProvider } from "@/lib/context/AddressContext"; // Restored
 import { ReviewsProvider } from "@/lib/context/ReviewsContext"; // Restored
 import { NotificationProvider } from "@/lib/context/NotificationContext"; // Restored
 import { SupportProvider } from "@/lib/context/SupportContext"; // Restored
+import MobileBottomNav from "@/components/MobileBottomNav";
 import "./globals.css";
 
 const inter = Inter({
@@ -42,6 +43,7 @@ export default function RootLayout({
                       <ReviewsProvider>
                         <CartProvider>
                           {children}
+                          <MobileBottomNav />
                         </CartProvider>
                       </ReviewsProvider>
                     </SupportProvider>

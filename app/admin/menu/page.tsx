@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/lib/context/AuthContext';
 import { useToast } from '@/lib/context/ToastContext';
-import { categories } from '@/lib/menuData'; // Keeping const lists
+import { categories } from '@/lib/categories'; // Keeping const lists
 import LoadingSkeleton from '@/components/LoadingSkeleton';
 import AdminSidebar from '@/components/admin/Sidebar';
 import styles from './menu-management.module.css';

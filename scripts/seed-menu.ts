@@ -1,6 +1,6 @@
 
 import mongoose, { Schema, model, models } from 'mongoose';
-import { menuData } from '../lib/menuData'; // Now properly imported via TS
+// import { menuData } from '../lib/menuData'; // Commented out - file doesn't exist
 import * as dotenv from 'dotenv';
 import path from 'path';
 
@@ -32,6 +32,11 @@ const MenuItemSchema = new Schema({
 const MenuItem = models.MenuItem || model('MenuItem', MenuItemSchema);
 
 async function seed() {
+    console.log('⚠️  This seed script is deprecated. Menu items are now managed through the admin dashboard.');
+    console.log('Please use the admin menu management page to add/edit menu items.');
+    process.exit(0);
+
+    /* Commented out - menuData file doesn't exist
     try {
         console.log('🔌 Connecting to MongoDB...');
         await mongoose.connect(MONGODB_URI);
@@ -49,6 +54,7 @@ async function seed() {
         console.error('❌ Error seeding database:', error);
         process.exit(1);
     }
+    */
 }
 
 seed();

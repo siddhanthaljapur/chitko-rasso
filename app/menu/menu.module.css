@@ -713,12 +713,38 @@
         font-size: var(--text-lg);
     }
 
+    .filtersSection {
+        top: 60px;
+        /* Adjust for smaller mobile header if needed */
+        padding: 1rem 0;
+    }
+
     .categoryFilters {
         gap: var(--space-2);
+        white-space: nowrap;
+        overflow-x: auto;
+        /* Allow horizontal scroll for categories */
+        padding-bottom: 5px;
+        /* Space for scrollbar */
+        justify-content: flex-start;
+        /* Align left for scroll */
+        flex-wrap: nowrap;
+        /* Prevent wrapping, enable scroll */
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Hide scrollbar for cleaner look */
+    .categoryFilters::-webkit-scrollbar {
+        display: none;
     }
 
     .categoryChip {
-        padding: var(--space-2) var(--space-4);
+        padding: 0.5rem 1rem;
         font-size: var(--text-xs);
+        flex-shrink: 0;
+    }
+
+    .menuGrid {
+        gap: var(--space-4);
     }
 }

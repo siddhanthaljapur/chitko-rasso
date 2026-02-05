@@ -4,7 +4,7 @@ import { useState, useMemo, useEffect, Suspense } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { menuData, categories } from '@/lib/menuData';
+import { categories } from '@/lib/categories';
 import { useCart } from '@/lib/context/CartContext';
 import { useAuth } from '@/lib/context/AuthContext';
 import { useToast } from '@/lib/context/ToastContext';
@@ -62,12 +62,11 @@ function MenuContent() {
                     setMenuItems(data);
                 } else {
                     console.error('Failed to fetch menu');
-                    showToast('Failed to load menu. Using offline data.', 'error');
-                    setMenuItems(menuData); // Fallback
+                    showToast('Failed to load menu. Please try again.', 'error');
                 }
             } catch (error) {
                 console.error('Error fetching menu:', error);
-                setMenuItems(menuData); // Fallback
+                showToast('Error loading menu', 'error');
             } finally {
                 setIsLoading(false);
             }

@@ -8,6 +8,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PromoPopup from '@/components/PromoPopup';
 import ActiveOrderFloat from '@/components/ActiveOrderFloat';
+import VideoShowcase from '@/components/VideoShowcase';
 import styles from './page.module.css';
 
 export default function Home() {
@@ -190,6 +191,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Video Showcase Section */}
+      <VideoShowcase />
 
       {/* Track Order Widget */}
       <section className={styles.trackSection} style={{ background: '#f8f9fa', padding: '4rem 0', textAlign: 'center' }}>

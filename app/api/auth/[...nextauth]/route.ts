@@ -84,6 +84,7 @@ export const authOptions: NextAuthOptions = {
                     name: user.name,
                     email: user.email,
                     role: user.role,
+                    phone: user.phone
                 };
             }
         })
@@ -93,10 +94,12 @@ export const authOptions: NextAuthOptions = {
             if (user) {
                 token.role = user.role;
                 token.id = user.id;
+                token.phone = (user as any).phone;
             }
-            // Handle session updates (e.g. converting "admin")
-            if (trigger === "update" && session?.name) {
-                token.name = session.name;
+            // Handle session updates from profile changes
+            if (trigger === "update") {
+                if (session?.name) token.name = session.name;
+                if ((session as any)?.phone) token.phone = (session as any).phone;
             }
             return token;
         },
@@ -104,6 +107,7 @@ export const authOptions: NextAuthOptions = {
             if (session.user) {
                 (session.user as any).role = token.role;
                 (session.user as any).id = token.id;
+                (session.user as any).phone = token.phone;
             }
             return session;
         }

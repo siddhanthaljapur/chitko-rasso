@@ -88,6 +88,8 @@ export default function Footer() {
                         <Link href="/faq">FAQ</Link>
                         <Link href="/privacy">Privacy Policy</Link>
                         <Link href="/terms">Terms & Conditions</Link>
+                        <span className={styles.divider}>•</span>
+                        <Link href="/developer" className={styles.developerCredit}>Developed by Siddhanth Aljapur</Link>
                     </div>
                 </div>
             </div>
