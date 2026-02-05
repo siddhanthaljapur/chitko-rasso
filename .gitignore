@@ -39,7 +39,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-# Large images only (keep videos for deployment)
-/public/rice-bowl.png
-/public/thali.png
