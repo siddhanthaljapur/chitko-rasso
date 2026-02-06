@@ -152,6 +152,9 @@ export default function CartContent() {
         return recommendations;
     };
 
+    // Compute recommendations once
+    const recommendations = cart.length > 0 && menuItems.length > 0 ? getRecommendations() : [];
+
     return (
         <div className={styles.cartPage}>
             <Navbar />
@@ -310,13 +313,13 @@ export default function CartContent() {
                             </div>
 
                             {/* Recommendations Section */}
-                            {menuItems.length > 0 && getRecommendations().length > 0 && (
+                            {recommendations.length > 0 && (
                                 <div className={styles.recommendations}>
                                     <div className={styles.recommendationsHeader}>
                                         <h2>✨ Add-ons / Complete Your Meal</h2>
                                     </div>
                                     <div className={styles.recommendationGrid}>
-                                        {getRecommendations().map(item => (
+                                        {recommendations.map(item => (
                                             <div key={item.id} className={styles.recommendationCard}>
                                                 <div className={styles.recImageWrapper}>
                                                     <Image
