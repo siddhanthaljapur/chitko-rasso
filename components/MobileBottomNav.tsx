@@ -2,11 +2,13 @@
 
 import Link from 'next/link';
 import { useAuth } from '@/lib/context/AuthContext';
+import { useCart } from '@/lib/context/CartContext';
 import { usePathname } from 'next/navigation';
 import styles from './MobileBottomNav.module.css';
 
 export default function MobileBottomNav() {
     const { isAuthenticated } = useAuth();
+    const { getCartCount } = useCart();
     const pathname = usePathname();
 
     // Don't show on admin pages
@@ -30,6 +32,16 @@ export default function MobileBottomNav() {
                     <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
                 </svg>
                 <span>Menu</span>
+            </Link>
+
+            <Link href="/cart" className={pathname === '/cart' ? styles.active : ''} style={{ position: 'relative' }}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                {getCartCount() > 0 && <span className={styles.cartBadge}>{getCartCount()}</span>}
+                <span>Cart</span>
             </Link>
 
             {isAuthenticated ? (

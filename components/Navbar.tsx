@@ -91,13 +91,8 @@ export default function Navbar() {
                         <Image src="/logo.jpg" alt="Chitko Rasso" width={60} height={60} style={{ objectFit: 'contain' }} priority />
                     </Link>
 
-                    {/* Mobile Header Actions (Cart + Notifications) - Right */}
+                    {/* Mobile Header Actions (Notifications + Profile) - Right */}
                     <div className={styles.mobileHeaderActions}>
-                        <Link href="/cart" className={styles.notificationBell}>
-                            🛒
-                            {getCartCount() > 0 && <span className={styles.cartBadge}>{getCartCount()}</span>}
-                        </Link>
-
                         {/* Notification Bell */}
                         <Link href="/notifications" className={styles.notificationBell}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
