@@ -93,13 +93,35 @@
 
 @media (max-width: 768px) {
     .container {
-        bottom: 1rem;
-        right: 1rem;
-        left: 1rem;
+        bottom: 80px;
+        /* Position above mobile bottom nav */
+        right: 0.5rem;
+        left: 0.5rem;
+        max-width: calc(100% - 1rem);
     }
 
     .content {
         width: 100%;
         min-width: auto;
+        padding: 0.75rem 1rem;
+    }
+
+    .icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1.3rem;
+    }
+
+    .label {
+        font-size: 0.7rem;
+    }
+
+    .status {
+        font-size: 0.85rem;
+    }
+
+    .trackBtn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
     }
 }

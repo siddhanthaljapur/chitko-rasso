@@ -50,14 +50,18 @@ function SuccessContent() {
                     </div>
                 </div>
 
-                <div className={styles.deliveryInfo}>
-                    <h3>📍 Delivery Address</h3>
-                    <p><strong>{order.deliveryAddress.name}</strong></p>
-                    <p>{order.deliveryAddress.phone}</p>
-                    <p>{order.deliveryAddress.address}</p>
-                    {order.deliveryAddress.landmark && <p>Landmark: {order.deliveryAddress.landmark}</p>}
-                    <p>{order.deliveryAddress.city} - {order.deliveryAddress.pincode}</p>
-                </div>
+                {order.deliveryAddress && (
+                    <div className={styles.deliveryInfo}>
+                        <h3>📍 Delivery Address</h3>
+                        {order.deliveryAddress.name && <p><strong>{order.deliveryAddress.name}</strong></p>}
+                        {order.deliveryAddress.phone && <p>{order.deliveryAddress.phone}</p>}
+                        {order.deliveryAddress.address && <p>{order.deliveryAddress.address}</p>}
+                        {order.deliveryAddress.landmark && <p>Landmark: {order.deliveryAddress.landmark}</p>}
+                        {(order.deliveryAddress.city || order.deliveryAddress.pincode) && (
+                            <p>{order.deliveryAddress.city} {order.deliveryAddress.pincode && `- ${order.deliveryAddress.pincode}`}</p>
+                        )}
+                    </div>
+                )}
 
                 <div className={styles.orderSummary}>
                     <h3>📦 Order Summary</h3>

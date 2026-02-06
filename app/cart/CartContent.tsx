@@ -10,6 +10,7 @@ import { useToast } from '@/lib/context/ToastContext';
 import Navbar from '@/components/Navbar';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Footer from '@/components/Footer';
+import ActiveOrderFloat from '@/components/ActiveOrderFloat';
 import { isKitchenOpen } from '@/lib/kitchenUtils';
 import { useMenu } from '@/lib/hooks/useMenu';
 import styles from './cart.module.css';
@@ -158,6 +159,7 @@ export default function CartContent() {
     return (
         <div className={styles.cartPage}>
             <Navbar />
+            <ActiveOrderFloat />
             <Breadcrumbs />
 
             <div className="container">

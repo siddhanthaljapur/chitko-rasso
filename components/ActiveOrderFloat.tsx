@@ -65,7 +65,7 @@ export default function ActiveOrderFloat() {
                                     <span className={styles.listId}>#{order.orderNumber}</span>
                                     <span className={styles.listStatus}>{order.status.toUpperCase()}</span>
                                 </div>
-                                <Link href={`/track?orderId=${order.id}`} className={styles.trackBtnSmall}>
+                                <Link href={`/track?orderId=${order._id || order.id}`} className={styles.trackBtnSmall}>
                                     Track
                                 </Link>
                             </div>
@@ -102,7 +102,7 @@ export default function ActiveOrderFloat() {
                         View All
                     </button>
                 ) : (
-                    <Link href={`/track?orderId=${latest.id}`} className={styles.trackBtn}>
+                    <Link href={`/track?orderId=${latest._id || latest.id}`} className={styles.trackBtn}>
                         Track
                     </Link>
                 )}

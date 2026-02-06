@@ -15,6 +15,7 @@ import Navbar from '@/components/Navbar';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Footer from '@/components/Footer';
 import LoadingSkeleton from '@/components/LoadingSkeleton';
+import ActiveOrderFloat from '@/components/ActiveOrderFloat';
 import { isKitchenOpen } from '@/lib/kitchenUtils';
 import styles from './menu.module.css';
 
@@ -151,6 +152,7 @@ function MenuContent() {
     return (
         <div className={styles.menuPage}>
             <Navbar />
+            <ActiveOrderFloat />
             <Breadcrumbs />
 
             {/* Hero Banner - Compact */}

@@ -15,9 +15,11 @@ import ReviewModal from '@/components/ReviewModal';
 import OrderRatingModal from '@/components/OrderRatingModal';
 import Navbar from '@/components/Navbar';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import ActiveOrderFloat from '@/components/ActiveOrderFloat';
 import styles from './profile.module.css';
 
 interface Order {
+    _id?: string;
     id: string;
     orderNumber: string;
     customerName: string;
@@ -259,6 +261,7 @@ export default function ProfilePage() {
     return (
         <div className={styles.profilePage}>
             <Navbar />
+            <ActiveOrderFloat />
             <Breadcrumbs />
 
             <div className="container">
@@ -589,7 +592,7 @@ export default function ProfilePage() {
                                 ) : (
                                     <div className={styles.ordersList}>
                                         {orders.map(order => (
-                                            <div key={order.id} className={styles.orderCard}>
+                                            <div key={order._id || order.id || order.orderNumber} className={styles.orderCard}>
                                                 <div className={styles.orderHeader}>
                                                     <div>
                                                         <h3>Order #{order.orderNumber}</h3>
@@ -599,7 +602,7 @@ export default function ProfilePage() {
                                                         <span className={`${styles.statusBadge} ${getStatusColor(order.status)}`}>
                                                             {getStatusText(order.status)}
                                                         </span>
-                                                        <span className={styles.orderTotal}>₹{order.total.toFixed(2)}</span>
+                                                        <span className={styles.orderTotal}>₹{order.total ? order.total.toFixed(2) : '0.00'}</span>
                                                     </div>
                                                 </div>
 

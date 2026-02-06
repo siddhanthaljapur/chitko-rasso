@@ -285,3 +285,278 @@
         transform: translateY(0);
     }
 }
+
+/* Mobile Delivery Animation Styles */
+.mobileDeliveryAnimation {
+    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+    border-radius: 16px;
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.1);
+    animation: fadeIn 0.5s ease-in;
+}
+
+.animationContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.restaurantIcon,
+.homeIcon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 2;
+}
+
+.iconCircle {
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: bounce 2s infinite;
+}
+
+.iconLabel {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #92400e;
+    text-align: center;
+}
+
+.deliveryPath {
+    flex: 1;
+    position: relative;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pathLine {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: repeating-linear-gradient(to right,
+            #fb923c 0px,
+            #fb923c 10px,
+            transparent 10px,
+            transparent 20px);
+    transform: translateY(-50%);
+    animation: pathMove 1s linear infinite;
+}
+
+.scooter {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    transition: left 2s ease-in-out;
+}
+
+.scooterWaiting {
+    left: 10%;
+    animation: scooterBounce 1s infinite;
+}
+
+.scooterMoving {
+    left: 70%;
+    animation: scooterRide 3s ease-in-out infinite;
+}
+
+.scooterIcon {
+    font-size: 2.5rem;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
+}
+
+.scooterTrail {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 0.25rem;
+    animation: trailFade 0.8s infinite;
+}
+
+.scooterTrail span {
+    font-size: 1.2rem;
+    opacity: 0.6;
+    animation: trailMove 0.8s infinite;
+}
+
+.scooterTrail span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.scooterTrail span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.cookingIcons {
+    position: absolute;
+    left: 15%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 2;
+}
+
+.cookIcon {
+    font-size: 1.5rem;
+    animation: cookBounce 1.5s infinite;
+    display: inline-block;
+}
+
+.cookIcon:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.cookIcon:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.deliveryStatusMessage {
+    background: white;
+    border-radius: 12px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    animation: pulse 2s infinite;
+}
+
+.statusEmoji {
+    font-size: 1.75rem;
+    animation: rotate 2s linear infinite;
+}
+
+.statusText {
+    font-weight: 600;
+    color: #92400e;
+    font-size: 0.95rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pathMove {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 20px 0;
+    }
+}
+
+@keyframes scooterBounce {
+
+    0%,
+    100% {
+        transform: translateY(-50%) scale(1);
+    }
+
+    50% {
+        transform: translateY(-55%) scale(1.05);
+    }
+}
+
+@keyframes scooterRide {
+
+    0%,
+    100% {
+        transform: translateY(-50%) rotate(0deg);
+    }
+
+    25% {
+        transform: translateY(-52%) rotate(-2deg);
+    }
+
+    75% {
+        transform: translateY(-48%) rotate(2deg);
+    }
+}
+
+@keyframes trailMove {
+    0% {
+        opacity: 0.8;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+}
+
+@keyframes cookBounce {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-8px) scale(1.1);
+    }
+}
+
+@keyframes rotate {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-10deg);
+    }
+
+    75% {
+        transform: rotate(10deg);
+    }
+}
+
+/* Hide on desktop, show only on mobile */
+@media (min-width: 769px) {
+    .mobileDeliveryAnimation {
+        display: none;
+    }
+}

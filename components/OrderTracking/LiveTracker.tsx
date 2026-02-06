@@ -158,6 +158,67 @@ export default function LiveTracker({ orderId, initialStatus }: LiveTrackerProps
                 })}
             </div>
 
+            {/* Mobile Animated Delivery Visual - Only show when order is in progress */}
+            {(status === 'preparing' || status === 'out_for_delivery') && (
+                <div className={styles.mobileDeliveryAnimation}>
+                    <div className={styles.animationContainer}>
+                        {/* Restaurant Icon */}
+                        <div className={styles.restaurantIcon}>
+                            <div className={styles.iconCircle}>🏪</div>
+                            <div className={styles.iconLabel}>Chitko Rasso</div>
+                        </div>
+
+                        {/* Animated Road/Path */}
+                        <div className={styles.deliveryPath}>
+                            <div className={styles.pathLine}></div>
+
+                            {/* Animated Scooter */}
+                            <div className={`${styles.scooter} ${status === 'out_for_delivery' ? styles.scooterMoving : styles.scooterWaiting}`}>
+                                <div className={styles.scooterIcon}>🛵</div>
+                                {status === 'out_for_delivery' && (
+                                    <div className={styles.scooterTrail}>
+                                        <span>💨</span>
+                                        <span>💨</span>
+                                        <span>💨</span>
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* Animated Food Icons */}
+                            {status === 'preparing' && (
+                                <div className={styles.cookingIcons}>
+                                    <span className={styles.cookIcon}>🔥</span>
+                                    <span className={styles.cookIcon}>👨‍🍳</span>
+                                    <span className={styles.cookIcon}>🍛</span>
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Home Icon */}
+                        <div className={styles.homeIcon}>
+                            <div className={styles.iconCircle}>🏠</div>
+                            <div className={styles.iconLabel}>Your Home</div>
+                        </div>
+                    </div>
+
+                    {/* Status Message */}
+                    <div className={styles.deliveryStatusMessage}>
+                        {status === 'preparing' && (
+                            <>
+                                <span className={styles.statusEmoji}>👨‍🍳</span>
+                                <span className={styles.statusText}>Chef is preparing your delicious meal...</span>
+                            </>
+                        )}
+                        {status === 'out_for_delivery' && (
+                            <>
+                                <span className={styles.statusEmoji}>🛵</span>
+                                <span className={styles.statusText}>Your food is on the way!</span>
+                            </>
+                        )}
+                    </div>
+                </div>
+            )}
+
             <div className={styles.mapSection}>
                 <svg className={styles.mapSvg} viewBox="0 0 100 100">
                     {/* Background Paths */}

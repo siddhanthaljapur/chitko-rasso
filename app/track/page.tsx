@@ -53,7 +53,7 @@ function TrackContent() {
 
             <div className={styles.trackLayout}>
                 <div className={styles.trackerSide}>
-                    <LiveTracker orderId={order.id} initialStatus={order.status} />
+                    <LiveTracker orderId={order._id || order.id} initialStatus={order.status} />
                 </div>
 
                 <div className={styles.detailsSide}>
@@ -73,7 +73,7 @@ function TrackContent() {
                         </div>
                         <div className={styles.detailRow}>
                             <span>Total</span>
-                            <strong>₹{order.total.toFixed(2)}</strong>
+                            <strong>₹{order.total ? order.total.toFixed(2) : '0.00'}</strong>
                         </div>
                     </div>
 
