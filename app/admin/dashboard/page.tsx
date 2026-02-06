@@ -10,6 +10,7 @@ import { isKitchenOpen, setKitchenStatus } from '@/lib/kitchenUtils';
 import styles from './dashboard.module.css';
 
 interface Order {
+    _id?: string;
     id: string;
     orderNumber: string;
     customerName: string;
@@ -274,7 +275,7 @@ export default function AdminDashboard() {
                                             <td><strong>{order.orderNumber}</strong></td>
                                             <td>{order.customerName}</td>
                                             <td>{order.items.length} items</td>
-                                            <td>₹{order.total.toFixed(2)}</td>
+                                            <td>₹{order.total ? order.total.toFixed(2) : '0.00'}</td>
                                             <td>
                                                 <span className={`${styles.statusBadge} ${styles[order.status]}`}>
                                                     {order.status}

@@ -10,6 +10,7 @@ import styles from './orders.module.css';
 import dashboardStyles from '../dashboard/dashboard.module.css';
 
 interface Order {
+    _id?: string;
     id: string;
     orderNumber: string;
     customerName: string;
@@ -299,7 +300,7 @@ export default function AdminOrdersPage() {
                                                     {order.items.length} items
                                                 </span>
                                             </td>
-                                            <td style={{ fontWeight: 600 }}>₹{order.total.toFixed(2)}</td>
+                                            <td style={{ fontWeight: 600 }}>₹{order.total ? order.total.toFixed(2) : '0.00'}</td>
                                             <td>
                                                 <span className={`${styles.statusBadge} ${styles['status_' + order.status]}`}>
                                                     {order.status.replace(/_/g, ' ')}
