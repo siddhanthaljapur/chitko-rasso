@@ -11,21 +11,27 @@ export function useMenu() {
     // Initialize and Load
     useEffect(() => {
         const loadMenu = async () => {
-            // Use Service to get Data (Simulated or Real)
-            const serviceData = await petPoojaService.getMenu();
-
-            if (serviceData.length > 0) {
-                setMenuItems(serviceData);
-                // Sync to local storage for persistence/fallback
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(serviceData));
-            } else {
-                // If service returns empty (e.g. first load), check local
+            try {
+                // Fetch from API endpoint (works on both localhost and production)
+                const response = await fetch('/api/menu');
+                if (response.ok) {
+                    const data = await response.json();
+                    setMenuItems(data);
+                    // Cache to localStorage for offline fallback
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+                } else {
+                    // Fallback to localStorage if API fails
+                    const stored = localStorage.getItem(STORAGE_KEY);
+                    if (stored) {
+                        setMenuItems(JSON.parse(stored));
+                    }
+                }
+            } catch (error) {
+                console.error('Failed to load menu:', error);
+                // Fallback to localStorage
                 const stored = localStorage.getItem(STORAGE_KEY);
                 if (stored) {
                     setMenuItems(JSON.parse(stored));
-                } else {
-                    // No local data, start empty
-                    setMenuItems([]);
                 }
             }
             setLoading(false);
