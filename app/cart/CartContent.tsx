@@ -310,41 +310,43 @@ export default function CartContent() {
                             </div>
 
                             {/* Recommendations Section */}
-                            <div className={styles.recommendations}>
-                                <div className={styles.recommendationsHeader}>
-                                    <h2>✨ Add-ons / Complete Your Meal</h2>
-                                </div>
-                                <div className={styles.recommendationGrid}>
-                                    {getRecommendations().map(item => (
-                                        <div key={item.id} className={styles.recommendationCard}>
-                                            <div className={styles.recImageWrapper}>
-                                                <Image
-                                                    src={item.image}
-                                                    alt={item.name}
-                                                    fill
-                                                    style={{ objectFit: 'cover' }}
-                                                />
-                                                <div className={styles.vegBadge} style={{ top: '4px', left: '4px', transform: 'scale(0.8)' }}>
-                                                    {item.isVeg ? '🟢' : '🔴'}
+                            {menuItems.length > 0 && getRecommendations().length > 0 && (
+                                <div className={styles.recommendations}>
+                                    <div className={styles.recommendationsHeader}>
+                                        <h2>✨ Add-ons / Complete Your Meal</h2>
+                                    </div>
+                                    <div className={styles.recommendationGrid}>
+                                        {getRecommendations().map(item => (
+                                            <div key={item.id} className={styles.recommendationCard}>
+                                                <div className={styles.recImageWrapper}>
+                                                    <Image
+                                                        src={item.image}
+                                                        alt={item.name}
+                                                        fill
+                                                        style={{ objectFit: 'cover' }}
+                                                    />
+                                                    <div className={styles.vegBadge} style={{ top: '4px', left: '4px', transform: 'scale(0.8)' }}>
+                                                        {item.isVeg ? '🟢' : '🔴'}
+                                                    </div>
+                                                </div>
+                                                <div className={styles.recContent}>
+                                                    <h4>{item.name}</h4>
+                                                    <div className={styles.recPrice}>₹{item.price}</div>
+                                                    <button
+                                                        className={styles.addRecBtn}
+                                                        onClick={() => {
+                                                            addToCart(item);
+                                                            showToast(`${item.name} added!`, 'success');
+                                                        }}
+                                                    >
+                                                        <span>➕</span> Add
+                                                    </button>
                                                 </div>
                                             </div>
-                                            <div className={styles.recContent}>
-                                                <h4>{item.name}</h4>
-                                                <div className={styles.recPrice}>₹{item.price}</div>
-                                                <button
-                                                    className={styles.addRecBtn}
-                                                    onClick={() => {
-                                                        addToCart(item);
-                                                        showToast(`${item.name} added!`, 'success');
-                                                    }}
-                                                >
-                                                    <span>➕</span> Add
-                                                </button>
-                                            </div>
-                                        </div>
-                                    ))}
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
+                            )}
                         </>
                     )}
                 </section>
