@@ -26,7 +26,7 @@ export default function ActiveOrderFloat() {
                     const allOrders = await res.json();
                     // Filter for active orders
                     const active = allOrders.filter((o: any) =>
-                        o.status !== 'delivered' && o.status !== 'cancelled'
+                        o.status !== 'Delivered' && o.status !== 'Cancelled'
                     );
 
                     if (active.length > 0) {

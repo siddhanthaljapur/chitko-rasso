@@ -302,8 +302,8 @@ export default function AdminOrdersPage() {
                                             </td>
                                             <td style={{ fontWeight: 600 }}>₹{order.total ? order.total.toFixed(2) : '0.00'}</td>
                                             <td>
-                                                <span className={`${styles.statusBadge} ${styles['status_' + order.status]}`}>
-                                                    {order.status.replace(/_/g, ' ')}
+                                                <span className={`${styles.statusBadge} ${styles['status_' + order.status.toLowerCase().replace(/\s+/g, '_')]}`}>
+                                                    {order.status}
                                                 </span>
                                             </td>
                                             <td>

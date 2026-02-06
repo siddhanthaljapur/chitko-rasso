@@ -47,20 +47,24 @@ export default function SupportOrderTracker({ onClose }: SupportOrderTrackerProp
 
     const getStatusColor = (status: string) => {
         switch (status) {
-            case 'pending': return '#fee2e2';
-            case 'preparing': return '#fef3c7';
-            case 'out_for_delivery': return '#d1fae5';
-            case 'delivered': return '#f3f4f6';
+            case 'Placed':
+            case 'Confirmed': return '#fee2e2';
+            case 'Preparation': return '#fef3c7';
+            case 'Out for Delivery': return '#d1fae5';
+            case 'Delivered': return '#f3f4f6';
+            case 'Cancelled': return '#fce4ec';
             default: return '#f3f4f6';
         }
     };
 
     const getStatusTextColor = (status: string) => {
         switch (status) {
-            case 'pending': return '#dc2626';
-            case 'preparing': return '#d97706';
-            case 'out_for_delivery': return '#059669';
-            case 'delivered': return '#4b5563';
+            case 'Placed':
+            case 'Confirmed': return '#dc2626';
+            case 'Preparation': return '#d97706';
+            case 'Out for Delivery': return '#059669';
+            case 'Delivered': return '#4b5563';
+            case 'Cancelled': return '#c2185b';
             default: return '#4b5563';
         }
     };

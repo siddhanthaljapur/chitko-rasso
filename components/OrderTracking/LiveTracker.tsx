@@ -9,18 +9,19 @@ interface LiveTrackerProps {
 }
 
 const statusMap: Record<string, number> = {
-    'pending': 0,
-    'preparing': 1,
-    'out_for_delivery': 2,
-    'delivered': 3,
-    'cancelled': -1
+    'Placed': 0,
+    'Confirmed': 0,
+    'Preparation': 1,
+    'Out for Delivery': 2,
+    'Delivered': 3,
+    'Cancelled': -1
 };
 
 const stages = [
-    { label: 'Received', icon: '📝', status: 'pending' },
-    { label: 'Preparing', icon: '👨‍🍳', status: 'preparing' },
-    { label: 'On the Way', icon: '🛵', status: 'out_for_delivery' },
-    { label: 'Delivered', icon: '🎁', status: 'delivered' }
+    { label: 'Received', icon: '📝', status: 'Placed' },
+    { label: 'Preparing', icon: '👨‍🍳', status: 'Preparation' },
+    { label: 'On the Way', icon: '🛵', status: 'Out for Delivery' },
+    { label: 'Delivered', icon: '🎁', status: 'Delivered' }
 ];
 
 import { petPoojaService } from '@/lib/services/petpooja';

@@ -185,12 +185,13 @@
     text-transform: capitalize;
 }
 
-.status_pending {
+.status_placed,
+.status_confirmed {
     background: rgba(255, 193, 7, 0.1);
     color: #f59e0b;
 }
 
-.status_preparing {
+.status_preparation {
     background: rgba(23, 162, 184, 0.1);
     color: #06b6d4;
 }
