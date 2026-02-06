@@ -6,6 +6,7 @@ import LiveTracker from '@/components/OrderTracking/LiveTracker';
 import styles from '../app/support/support.module.css';
 
 interface Order {
+    _id?: string;
     id: string;
     orderNumber: string;
     customerName: string;
@@ -94,7 +95,7 @@ export default function SupportOrderTracker({ onClose }: SupportOrderTrackerProp
                                                 <span>•</span>
                                                 <span>{order.items.length} Items</span>
                                                 <span>•</span>
-                                                <span style={{ color: '#1f2937', fontWeight: '600' }}>₹{order.total.toFixed(2)}</span>
+                                                <span style={{ color: '#1f2937', fontWeight: '600' }}>₹{order.total ? order.total.toFixed(2) : '0.00'}</span>
                                             </div>
                                         </div>
                                         <div
@@ -165,7 +166,7 @@ export default function SupportOrderTracker({ onClose }: SupportOrderTrackerProp
                                             borderTop: '1px solid #e5e7eb'
                                         }}>
                                             <span>Total</span>
-                                            <span>₹{selectedOrder.total.toFixed(2)}</span>
+                                            <span>₹{selectedOrder.total ? selectedOrder.total.toFixed(2) : '0.00'}</span>
                                         </div>
                                     </div>
                                 </div>
