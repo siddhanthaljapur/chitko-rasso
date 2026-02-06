@@ -118,17 +118,26 @@ export default function AdminDashboard() {
 
 
     const handleStatusUpdate = async (orderId: string, newStatus: string) => {
-        // Ideally call API to update status
-        // await fetch(`/api/orders/${orderId}`, { method: 'PUT', body: ... })
-
-        // For now, optimistic update in UI only as we haven't built PUT /api/orders/[id] yet
-        // But preventing localStorage write
+        // Optimistic UI Update
+        const previousOrders = [...orders];
         const updatedOrders = orders.map(order =>
-            order.id === orderId ? { ...order, status: newStatus } : order
+            (order.id === orderId || order._id === orderId) ? { ...order, status: newStatus } : order
         );
         setOrders(updatedOrders);
-        // localStorage.setItem('chitko-orders', JSON.stringify(updatedOrders)); // REMOVED
-        showToast(`Order status updated to ${newStatus} (Local UI only)`, 'success');
+
+        try {
+            const res = await fetch(`/api/orders/${orderId}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ status: newStatus })
+            });
+
+            if (!res.ok) throw new Error('Failed to update');
+            showToast(`Order status updated to ${newStatus}`, 'success');
+        } catch (error) {
+            setOrders(previousOrders); // Revert on failure
+            showToast('Failed to update status', 'error');
+        }
     };
 
     const handleLogout = () => {
@@ -277,7 +286,7 @@ export default function AdminDashboard() {
                                             <td>{order.items.length} items</td>
                                             <td>₹{order.total ? order.total.toFixed(2) : '0.00'}</td>
                                             <td>
-                                                <span className={`${styles.statusBadge} ${styles[order.status]}`}>
+                                                <span className={`${styles.statusBadge} ${styles[order.status.toLowerCase().replace(/\s+/g, '_')]}`}>
                                                     {order.status}
                                                 </span>
                                             </td>
@@ -285,14 +294,14 @@ export default function AdminDashboard() {
                                             <td>
                                                 <select
                                                     value={order.status}
-                                                    onChange={(e) => handleStatusUpdate(order.id, e.target.value)}
+                                                    onChange={(e) => handleStatusUpdate(order._id || order.id, e.target.value)}
                                                     className={styles.statusSelect}
                                                 >
-                                                    <option value="pending">Pending</option>
-                                                    <option value="preparing">Preparing</option>
-                                                    <option value="out_for_delivery">Out for Delivery</option>
-                                                    <option value="delivered">Delivered</option>
-                                                    <option value="cancelled">Cancelled</option>
+                                                    <option value="Placed">Placed</option>
+                                                    <option value="Preparation">Preparing</option>
+                                                    <option value="Out for Delivery">Out for Delivery</option>
+                                                    <option value="Delivered">Delivered</option>
+                                                    <option value="Cancelled">Cancelled</option>
                                                 </select>
                                             </td>
                                         </tr>

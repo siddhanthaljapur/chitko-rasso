@@ -309,14 +309,14 @@ export default function AdminOrdersPage() {
                                             <td>
                                                 <select
                                                     value={order.status}
-                                                    onChange={(e) => handleStatusUpdate(order.id, e.target.value)}
+                                                    onChange={(e) => handleStatusUpdate((order as any)._id || order.id, e.target.value)}
                                                     className={styles.statusSelect}
                                                 >
-                                                    <option value="pending">Pending</option>
-                                                    <option value="preparing">Preparing</option>
-                                                    <option value="out_for_delivery">Out for Delivery</option>
-                                                    <option value="delivered">Delivered</option>
-                                                    <option value="cancelled">Cancelled</option>
+                                                    <option value="Placed">Placed</option>
+                                                    <option value="Preparation">Preparing</option>
+                                                    <option value="Out for Delivery">Out for Delivery</option>
+                                                    <option value="Delivered">Delivered</option>
+                                                    <option value="Cancelled">Cancelled</option>
                                                 </select>
                                             </td>
                                         </tr>

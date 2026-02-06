@@ -10,6 +10,7 @@ import AdminSidebar from '@/components/admin/Sidebar';
 import styles from './petpooja.module.css';
 
 interface Order {
+    _id?: string;
     id: string;
     orderNumber: string;
     customerName: string;
@@ -308,20 +309,20 @@ export default function PetPoojaPage() {
                                         </div>
 
                                         <div className={styles.actionGrid}>
-                                            {selectedOrder.status === 'pending' && (
-                                                <button className={`${styles.actionBtn} ${styles.btnAccept}`} onClick={() => updateStatus(selectedOrder.id, 'preparing')}>
+                                            {selectedOrder.status === 'Placed' && (
+                                                <button className={`${styles.actionBtn} ${styles.btnAccept}`} onClick={() => updateStatus(selectedOrder._id || selectedOrder.id, 'Preparation')}>
                                                     ✅ Accept KOT
                                                 </button>
                                             )}
 
-                                            {(selectedOrder.status === 'preparing') && (
-                                                <button className={`${styles.actionBtn} ${styles.btnReady}`} onClick={() => updateStatus(selectedOrder.id, 'out_for_delivery')}>
+                                            {(selectedOrder.status === 'Preparation') && (
+                                                <button className={`${styles.actionBtn} ${styles.btnReady}`} onClick={() => updateStatus(selectedOrder._id || selectedOrder.id, 'Out for Delivery')}>
                                                     🥡 Food Ready
                                                 </button>
                                             )}
 
-                                            {selectedOrder.status === 'out_for_delivery' && (
-                                                <button className={`${styles.actionBtn} ${styles.btnDispatch}`} onClick={() => updateStatus(selectedOrder.id, 'delivered')}>
+                                            {selectedOrder.status === 'Out for Delivery' && (
+                                                <button className={`${styles.actionBtn} ${styles.btnDispatch}`} onClick={() => updateStatus(selectedOrder._id || selectedOrder.id, 'Delivered')}>
                                                     🏁 Mark Delivered
                                                 </button>
                                             )}
@@ -330,8 +331,8 @@ export default function PetPoojaPage() {
                                                 🖨️ Print Bill
                                             </button>
 
-                                            {selectedOrder.status === 'pending' && (
-                                                <button className={`${styles.actionBtn} ${styles.btnCancel}`} onClick={() => updateStatus(selectedOrder.id, 'cancelled')}>
+                                            {selectedOrder.status === 'Placed' && (
+                                                <button className={`${styles.actionBtn} ${styles.btnCancel}`} onClick={() => updateStatus(selectedOrder._id || selectedOrder.id, 'Cancelled')}>
                                                     ❌ Reject
                                                 </button>
                                             )}
