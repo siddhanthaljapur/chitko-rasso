@@ -304,7 +304,7 @@ export default function PetPoojaPage() {
 
                                     <div className={styles.kotFooter}>
                                         <div className={styles.billSummary}>
-                                            Total: ₹{selectedOrder.total.toFixed(2)}
+                                            Total: ₹{selectedOrder.total ? selectedOrder.total.toFixed(2) : '0.00'}
                                         </div>
 
                                         <div className={styles.actionGrid}>

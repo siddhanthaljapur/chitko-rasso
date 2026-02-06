@@ -76,7 +76,7 @@ function SuccessContent() {
                     <div className={styles.divider}></div>
                     <div className={styles.totalRow}>
                         <span>Total Amount</span>
-                        <strong>₹{order.total.toFixed(2)}</strong>
+                        <strong>₹{order.total ? order.total.toFixed(2) : '0.00'}</strong>
                     </div>
                     <div className={styles.paymentMethod}>
                         <span>Payment Method: </span>
